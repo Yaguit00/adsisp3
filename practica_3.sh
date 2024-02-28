@@ -12,11 +12,11 @@ else
     else
         echo "ole, tienes permisos"
         while IFS=, read -r username passwd nombrecompleto; do
-            exists=$(grep -c "^$username:" /etc/passwd | wc -l)
-            if [ $exists -eq 0 ]; then
+            exists=$(grep -c "^$username:" /etc/passwd)
+            if [ $exists -ne 0 ]; then
                 echo "existes"
             else
-            echo $(grep -c "^$username:" /etc/passwd) 
+            
             useradd -c $nombrecompleto -p $passwd -m -K PASS_MAX_DAYS=30 $username
             echo "$nombrecompleto ha sido creado"
             fi

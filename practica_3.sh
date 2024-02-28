@@ -31,8 +31,7 @@ else
             fi
             while IFS=, read -r deleteme inutil inutil1; do
                 echo "entro en el while"
-                exists=$(grep -c "^$username:" /etc/passwd)
-                echo $exists
+                exists=$(grep -c "^$deleteme:" /etc/passwd)
                 if [ $exists -ne 0 ]; then
                     echo "entro en el ifgrep"
                     tar -cf /extra/backup/$(deleteme).tar /home/$deleteme/ #teoricamente crea el tar file

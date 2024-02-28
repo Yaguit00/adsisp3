@@ -3,5 +3,8 @@
 #870959, Pueyo Soria, Nicolas, T, 3, A
 
 if [ $EUID -ne 0 ]; then
-    echo "“Este script necesita privilegios de administracion"
+    echo "Este script necesita privilegios de administracion"
+    return
+else
+    echo "ole, tienes permisos"
 fi

@@ -11,15 +11,20 @@ else
         return
     else
         echo "ole, tienes permisos"
-        while IFS=, read -r username passwd nombrecompleto; do
-            exists=$(grep -c "^$username:" /etc/passwd)
-            if [ $exists -ne 0 ]; then
-                echo "existes"
-            else
-            
-            useradd -c $nombrecompleto -p $passwd -m -K PASS_MAX_DAYS=30 $username
-            echo "$nombrecompleto ha sido creado"
-            fi
-       done < $2
+        if [ $1 = "-a" ]; then
+
+            while IFS=, read -r username passwd nombrecompleto; do
+                exists=$(grep -c "^$username:" /etc/passwd)
+                if [ $exists -ne 0 ]; then
+                    echo "existes"
+                else
+
+                useradd -c $nombrecompleto -p $passwd -m -K PASS_MAX_DAYS=30 $username
+                echo "$nombrecompleto ha sido creado"
+                fi
+            done < $2
+        elif [ $1 = "-s" ]; then
+            echo "quieres borrar y aun no se xd"
+        fi
     fi
 fi

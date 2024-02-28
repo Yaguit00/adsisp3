@@ -39,7 +39,10 @@ else
                         userdel  $deleteme
                         echo "borra el usuario $deleteme"
                     fi
+                else
+                    echo "pitos y flautas"
                 fi
+
             done < $2
         else
             echo "ponme parametros validos o que chupacharcos" 1>&2

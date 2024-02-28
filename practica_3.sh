@@ -32,11 +32,11 @@ else
             while IFS=, read -r deleteme inutil inutil1; do
                 exists=$(grep -c "^$deleteme:" /etc/passwd)
                 if [ $exists -ne 0 ]; then
-                    cd /extra/backup && tar -cfv $deleteme.tar /home/$deleteme/ && cd - 
+                    cd /extra/backup && tar -cf $deleteme.tar /home/$deleteme/ && cd -
 
 
-                    if [ $? ];then # si es 0, entro y elimino usuario
-                        userdel  $deleteme
+                    if [ -f /extra/backup/$deleteme.tar ];then # si es 0, entro y elimino usuario
+                        userdel -r $deleteme
                         echo "borra el usuario $deleteme"
                     fi
                 else

@@ -26,9 +26,16 @@ else
                 fi
             done < $2
         elif [ $1 = "-s" ]; then
+            if ! [ -d /extra/backup ];then #si no existe ete directorio, lo crea
+                mkdir /extra/backup
+            fi
             while IFS=, read -r deleteme inutil inutil1; do
                 if [ $exists -ne 0 ]; then
-                    echo "borra el usuario $deleteme"
+                    tar -cf /extra/backup/$(deleteme).tar /home/$deleteme/ #teoricamente crea el tar file
+                    if ! [ $? ];then # si es 0, entro y elimino usuario
+                        userdel  $deleteme
+                        echo "borra el usuario $deleteme"
+                    fi
                 fi
             done < $2
         else

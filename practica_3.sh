@@ -12,7 +12,7 @@ else
     else
         echo "ole, tienes permisos"
         while IFS=, read -r username passwd nombrecompleto; do
-            exists=$(grep -c "^$username:" /etc/passwd)
+            exists=$(grep -c "^$username:" /etc/passwd | wc -l)
             if [ exists -eq 0 ]; then
                 echo "existes"
             else

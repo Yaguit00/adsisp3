@@ -12,7 +12,7 @@ else
     else
         echo "ole, tienes permisos"
         while IFS=, read -r username passwd nombrecompleto; do
-            if [ id -u $username ];then
+            if [ id $username ];then
                 echo "existes"
             else
             useradd -c $nombrecompleto -p $passwd -m -K PASS_MAX_DAYS=30 $username

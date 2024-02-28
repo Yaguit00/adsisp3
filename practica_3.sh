@@ -28,7 +28,7 @@ else
         elif [ $1 = "-s" ]; then
             if ! [ -d /extra/backup ];then #si no existe ete directorio, lo crea
                 echo "quiero crear extrabackup"
-                mkdir /extra/backup
+                mkdir -p /extra/backup
             fi
             while IFS=, read -r deleteme inutil inutil1; do
                 if [ $(grep -c "^$username:" /etc/passwd) -ne 0 ]; then

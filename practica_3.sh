@@ -20,7 +20,7 @@ else
                     if [ $username = "" -o passwd = "" -o nombrecompleto = "" ];then
                         echo "Campo invalido"
                     else
-                        useradd -c $nombrecompleto -p $passwd -m -K PASS_MAX_DAYS=30 -K UID_MIN=1815 $username
+                        useradd -c $nombrecompleto -p $passwd -m -g $username -K PASS_MAX_DAYS=30 -K UID_MIN=1815 $username
                         echo "$nombrecompleto ha sido creado"
                     fi
                 fi

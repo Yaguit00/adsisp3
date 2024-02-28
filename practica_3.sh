@@ -16,7 +16,7 @@ else
             if [ $exists -eq 0 ]; then
                 echo "existes"
             else
-            echo $exists
+            echo $(grep -c "^$username:" /etc/passwd)
             useradd -c $nombrecompleto -p $passwd -m -K PASS_MAX_DAYS=30 $username
             echo "$nombrecompleto ha sido creado"
             fi

@@ -13,6 +13,7 @@ else
         echo "ole, tienes permisos"
         echo $(while IFS= read -r line; do
             echo "$line"
-            done < prueba.txt)
+            sleep 10
+            done < $2)
     fi
 fi

@@ -27,13 +27,15 @@ else
             done < $2
         elif [ $1 = "-s" ]; then
             if ! [ -d /extra/backup ];then #si no existe ete directorio, lo crea
-                echo "quiero crear extrabackup"
                 mkdir -p /extra/backup
             fi
             while IFS=, read -r deleteme inutil inutil1; do
+                echo "entro en el while"
                 if [ $(grep -c "^$username:" /etc/passwd) -ne 0 ]; then
+                    echo "entro en el ifgrep"
                     tar -cf /extra/backup/$(deleteme).tar /home/$deleteme/ #teoricamente crea el tar file
-                    if ! [ $? ];then # si es 0, entro y elimino usuario
+                    echo "he hecho el tar"
+                    if [ $? ];then # si es 0, entro y elimino usuario
                         userdel  $deleteme
                         echo "borra el usuario $deleteme"
                     fi

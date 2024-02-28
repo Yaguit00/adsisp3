@@ -12,7 +12,7 @@ else
     else
         echo "ole, tienes permisos"
         while IFS=, read -r username passwd nombrecompleto; do
-            useradd -c $nombrecompleto -p $passwd -d -K PASS_MAX_DAYS=30 $username
+            useradd -c $nombrecompleto -p $passwd -d $username -K PASS_MAX_DAYS=30 $username
             echo "$nombrecompleto ha sido creado"
        done < $2
     fi

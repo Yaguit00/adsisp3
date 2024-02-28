@@ -11,9 +11,11 @@ else
         return
     else
         echo "ole, tienes permisos"
-        echo $(while IFS= read -r line; do
-            echo "$line"
-            sleep 10
-            done < $2)
+       while read line; do
+            for word in $line; do
+                echo "word = '$word'"
+            done
+
+       done < $2
     fi
 fi

@@ -12,7 +12,8 @@ else
     else
         echo "ole, tienes permisos"
         while IFS=, read -r username passwd nombrecompleto; do
-            if [ grep '$username' /etc/passwd ]; then
+            exists=$(grep -c "^$username:" /etc/passwd)
+            if [ exists -eq 0 ]; then
                 echo "existes"
             else
             useradd -c $nombrecompleto -p $passwd -m -K PASS_MAX_DAYS=30 $username

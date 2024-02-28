@@ -16,15 +16,22 @@ else
             while IFS=, read -r username passwd nombrecompleto; do
                 exists=$(grep -c "^$username:" /etc/passwd)
                 if [ $exists -ne 0 ]; then
-                    echo "existes"
+                    echo "El usuario $username ya existe"
                 else
-
-                useradd -c $nombrecompleto -p $passwd -m -K PASS_MAX_DAYS=30 $username
-                echo "$nombrecompleto ha sido creado"
+                    if [ $username = "" -o passwd = "" -o nombrecompleto = "" ];then
+                        echo "Campo invalido"
+                    else
+                        useradd -c $nombrecompleto -p $passwd -m -K PASS_MAX_DAYS=30 $username
+                        echo "$nombrecompleto ha sido creado"
+                    fi
                 fi
             done < $2
         elif [ $1 = "-s" ]; then
-            echo "quieres borrar y aun no se xd"
+            while IFS=, read -r deleteme inutil inutil1; do
+                echo "borra el usuario $deleteme"
+            done < $2
+        else
+            echo "ponme parametros validos o que chupacharcos" 1>&2
         fi
     fi
 fi

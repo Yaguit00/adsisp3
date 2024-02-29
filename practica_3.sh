@@ -2,6 +2,9 @@
 #878417, Torres Garcia, Yago, T, 3, A
 #870959, Pueyo Soria, Nicolas, T, 3, A
 
+chpasswd
+usermod
+
 if [ $# -ne 2 ]; then
     echo "Numero incorrecto de parametros"
 else
@@ -44,5 +47,3 @@ else
     fi
 fi
 
-chpasswd
-usermod

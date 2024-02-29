@@ -1,0 +1,8 @@
+Emplear sudo sin pswd:
+    Si no proivilegiado, salida 1, error "necesita privilegios"
+    2 argumentos
+    fichero tendrá líneas de 3 campos
+    usuarios se añaden solo por 30 días
+    comandos a usar: useradd, userdel, usermod y chpasswd.
+    fichero se inicial con /etc/skel
+    borrado de usuarios incluye su home, pero debe hacer un /extra/backup donde guarda su home

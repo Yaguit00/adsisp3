@@ -43,3 +43,6 @@ else
         fi
     fi
 fi
+
+chpasswd
+usermod
